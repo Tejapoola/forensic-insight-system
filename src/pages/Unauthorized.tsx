@@ -3,16 +3,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '../contexts/AuthContext';
+import { AlertTriangle } from 'lucide-react';
 
-const NotFound = () => {
+const Unauthorized = () => {
   const { user } = useAuth();
   
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-forensic-navy p-4 text-center">
-      <h1 className="text-6xl font-bold text-forensic-blue mb-4">404</h1>
-      <h2 className="text-2xl font-semibold text-white mb-6">Page Not Found</h2>
+      <div className="bg-red-500/10 p-4 rounded-full mb-6">
+        <AlertTriangle size={48} className="text-red-500" />
+      </div>
+      <h1 className="text-3xl font-bold text-white mb-4">Access Denied</h1>
       <p className="text-gray-400 max-w-md mb-8">
-        The page you are looking for doesn't exist or has been moved.
+        You don't have permission to access this page. Please contact an administrator 
+        if you believe this is a mistake.
       </p>
       <Link to={user ? "/" : "/login"}>
         <Button className="bg-forensic-blue hover:bg-blue-600">
@@ -23,4 +27,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default Unauthorized;
