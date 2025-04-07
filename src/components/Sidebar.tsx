@@ -13,7 +13,11 @@ import {
   FileArchive,
   LogOut,
   Menu,
-  X
+  X,
+  Search,
+  BarChart2,
+  Shield,
+  Settings
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -24,14 +28,16 @@ const Sidebar = () => {
   const getNavItems = () => {
     const commonItems = [
       { name: 'Home', path: '/', icon: Home },
+      { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
       { name: 'Cases', path: '/cases', icon: FolderOpen },
       { name: 'Evidence', path: '/evidence', icon: Database },
       { name: 'Reports', path: '/reports', icon: FileText },
     ];
     
     const adminItems = [
-      { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
-      { name: 'Users', path: '/admin/users', icon: Users },
+      { name: 'Admin Dashboard', path: '/admin', icon: BarChart2 },
+      { name: 'User Management', path: '/admin/users', icon: Users },
+      { name: 'System Settings', path: '/admin/settings', icon: Settings },
       { name: 'Archives', path: '/admin/archives', icon: FileArchive },
     ];
     

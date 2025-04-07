@@ -13,8 +13,12 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Cases from "./pages/Cases";
+import CaseDetail from "./pages/CaseDetail";
 import NotFound from "./pages/NotFound";
 import Unauthorized from "./pages/Unauthorized";
+import AdminDashboard from "./pages/AdminDashboard";
+import UserManagement from "./pages/UserManagement";
 
 const queryClient = new QueryClient();
 
@@ -33,17 +37,35 @@ const App = () => (
               <Route path="/register" element={<Register />} />
               <Route path="/unauthorized" element={<Unauthorized />} />
               
-              {/* Protected routes */}
+              {/* Protected routes for all authenticated users */}
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />
                 </ProtectedRoute>
               } />
               
+              <Route path="/cases" element={
+                <ProtectedRoute>
+                  <Cases />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/cases/:caseId" element={
+                <ProtectedRoute>
+                  <CaseDetail />
+                </ProtectedRoute>
+              } />
+              
               {/* Admin-only routes */}
               <Route path="/admin" element={
                 <ProtectedRoute allowedRoles={['admin']}>
-                  <Dashboard />
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/admin/users" element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <UserManagement />
                 </ProtectedRoute>
               } />
               
